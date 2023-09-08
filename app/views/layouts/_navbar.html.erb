@@ -1,7 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<%= stylesheet_link_tag("navbar.css")%>
+<nav class="navbar navbar-expand-lg navbar-dark static-top" style="background-color:#592673;" >
+  <% if user_signed_in? %>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, style:"width: 50px; height: 50px;" %>
+    <% end %>
+  <% end %>
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="36">
+      <img src="C:/Users/antom/Documents/GitHub/Niveladas/app/assets/images/opción 1 - fondo oscuro.png" alt="..." height="36">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,16 +15,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active" aria-current="page", home_index_path >Inicio</a>
         </li>
         <li class="nav-item">
-          <%= link_to "sala", home_purgatory_path, class:"nav-link"%>
+          <%= link_to "Sala", home_purgatory_path, class:"nav-link"%>
         </li>
         <li class="nav-item">
           <%= link_to "Términos y Condiciones", home_about_path, class:"nav-link"%>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ingresar</a>
+         <li class="nav-item">
+          <%= link_to "Cerrar sesión", destroy_user_session_path,class:"nav-link", style:"border:none;"%>
         </li>
         <li class="nav-item">
            <%= link_to "Registrarse", new_user_registration_path, class:"sign-up nav-link" %>

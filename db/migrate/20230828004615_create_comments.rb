@@ -1,11 +1,11 @@
 class CreateComments < ActiveRecord::Migration[7.0]
   def change
-    create_table :comments do |t|
-      t.string :text
-      t.string :user_id
-      t.string :post_id
+    create_table :users do |t|
+      t.string :name
+      t.integer :pfs_number
+      t.boolean :admin
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

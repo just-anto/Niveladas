@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'purgatory/library'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   authenticate :user, -> (u) { u.admin? } do # Supposing there is a User#admin? method
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   post 'users/:id/decline', to: "users#decline", as: "decline"
   post 'users/:id/cancel', to: "users#cancel", as: "cancel"
 
+  get 'home/index'
   get 'home/about'
   get 'home/purgatory'
   get 'posts/myposts'
@@ -34,5 +36,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-   root "post#index"
+   root "home#index"
 end
